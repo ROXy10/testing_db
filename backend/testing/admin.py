@@ -1,14 +1,21 @@
 from django.contrib import admin
-
+from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 from .models import Testing, Test, Question, Answer
 
 
-class QuestionInline(admin.TabularInline):
+class AnswerInline(NestedStackedInline):
+    model = Answer
+    extra = 1
+    fk_name = 'question'
+
+class QuestionInline(NestedStackedInline):
     model = Question
-    show_change_link = True
+    extra = 1
+    fk_name = 'test'
+    inlines = [AnswerInline, ]
 
 
-class TestAdmin(admin.ModelAdmin):
+class TestAdmin(NestedModelAdmin):
     list_display = ['test_title', 'is_active']
     list_display_links = ['test_title']
     list_editable = ['is_active']
@@ -21,11 +28,6 @@ class TestAdmin(admin.ModelAdmin):
     inlines = [
         QuestionInline,
     ]
-
-
-class AnswerInline(admin.TabularInline):
-    model = Answer
-    show_change_link = True
 
 
 class QuestionAdmin(admin.ModelAdmin):
