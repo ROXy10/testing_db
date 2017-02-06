@@ -1,0 +1,311 @@
+@import "bourbon"
+@import "fonts"
+@import "libs"
+@import "vars"
+@import "../css/font-icons.css"
+
+*::-webkit-input-placeholder
+    color: #666
+    opacity: 1
+
+*:-moz-placeholder
+    color: #666
+    opacity: 1
+
+*::-moz-placeholder
+    color: #666
+    opacity: 1
+
+*:-ms-input-placeholder
+    color: #666
+    opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+    color: #666
+
+body input:required:valid,
+body textarea:required:valid
+    color: #666
+
+body
+    height: 100%
+    font-family: $roboto-font
+    background-color: rgb(204, 204, 204)
+    color: $font-color
+    font-size: 18px
+    background: url('../img/background.jpg') no-repeat center center fixed
+    -webkit-background-size: cover
+    -moz-background-size: cover
+    -o-background-size: cover
+    background-size: cover
+html
+    position: relative
+    min-height: 100%
+
+h1
+    font-size: 2.4em
+    line-height: 1.1
+    margin: 0.5em 0
+    text-shadow: $text-shadow
+
+h2
+    font-size: 1.85em
+    line-height: 1.1
+    margin: 0.55em 0
+    text-shadow: $text-shadow
+
+h3
+    font-size: 1.45em
+    line-height: 1.1
+    margin: 0.6em 0
+    text-shadow: $text-shadow
+
+h4
+    font-size: 1.25em
+    line-height: 1.1
+    margin: 0.65em 0
+    text-shadow: $text-shadow
+
+h5
+    font-size: 1.15em
+    line-height: 1.1
+    margin: 0.7em 0
+    text-shadow: $text-shadow
+
+h6
+    font-size: 1.05em
+    line-height: 1.1
+    margin: 0.7em 0
+    text-shadow: $text-shadow
+
+
+a
+    color: $font-color
+    @include transition
+    &:hover, &:focus
+        text-decoration: none
+        color: $font-color-cover
+        outline: none
+
+p
+    margin: 1em 0
+
+.img-responsive
+    display: block
+    max-width: 100%
+    height: auto
+
+.p0
+    padding: 0
+
+.container
+    padding-bottom: 50px
+
+//SECTION BACKGROUND LAYER STYLES
+.background__layer
+    position: fixed
+    width: 100%
+    height: 100%
+    z-index: -1
+    background: url(../img/background-image-overlay.png) repeat
+//SECTION BACKGROUND LAYER STYLES END
+
+//SECTION NAVBAR STYLES
+.navbar
+    display: block
+    position: fixed
+    top: 0
+    left: 6.5%
+    width: 205px
+    min-width: 205px
+    height: 100%
+    background: $background-color
+    &__brand
+        text-align: center
+        &-logo
+            font-size: 5.556em
+    &__information
+        text-align: center
+        margin-top: 60px
+        &-timer
+            font-family: $roboto-bold-font
+        &-btn
+            @include btn
+//SECTION NAVBAR STYLES END
+
+//SECTION CONTENT STYLES  
+.content
+    text-align: right
+    font-size: 1.444em
+    &__wrapper
+        display: table-cell
+        vertical-align: middle
+        height: 94vh
+    &__btn
+        @include btn
+
+//SECTION CONTENT STYLES END
+
+//SECTION TEST STYLES
+.test
+    &__header
+        text-align: center
+        padding: 50px 0
+    &__form
+        &-sup-text
+            font-size: 0.8em
+            color: $material-yellow
+        &-list
+            list-style: none
+            padding: 0 0 15px 0
+            border-bottom: 1px solid $material-yellow
+            &-item
+                padding: 10px 0
+                &:hover
+                    background-color: $background-color
+                &-label
+                    display: block
+                &-input
+                    display: none
+                &-icon
+                    width: 35px
+                    display: inline-block
+                    padding-right: 20px
+                    &:after
+                        font-size: 1.33em
+                        content: "\f096"
+                        font-family: $font-icons
+        &-btn
+            background: none
+            @include btn
+            &:hover, &:focus
+                outline: none
+    &__wrapper
+        text-align: center
+.test__form-list-item-input:checked+.test__form-list-item-icon:after
+    content: "\e805"
+    color: $material-yellow
+//SECTION TEST STYLES END
+
+//SECTION RESULT STYLES
+.result
+    padding-top: 30px
+    text-align: center
+    &__pass
+        background-color: $material-green
+        padding: 10px 55px
+        text-align: center
+        display: inline-block
+        margin: 4px 2px
+        text-transform: uppercase
+    &__fail
+        background-color: $material-red
+        padding: 10px 55px
+        text-align: center
+        display: inline-block
+        margin: 4px 2px
+        text-transform: uppercase
+    &__table
+        margin-top: 30px
+        text-align: left
+        font-size: 1.333em
+        &-item
+            border-bottom: 1px solid $font-color
+            &:hover
+                background-color: $background-color
+            &-cell
+                padding: 10px 10px
+                &-answer
+                    font-size: 0.6em
+                    color: $material-red
+                &-list
+                    margin: 0
+                    list-style: none
+                &--true
+                    color: $material-green
+                    text-align: center
+                    font-size: 2.77em
+                &--false
+                    color: $material-red
+                    text-align: center
+                    font-size: 2.77em
+//SECTION RESULT STYLES END
+
+//SECTION FOOTER STYLES
+.footer
+    position: fixed
+    bottom: 10px
+    left: 6.5%
+    margin: 10px 0
+    width: 205px
+    min-width: 205px
+    text-align: center
+    font-size: 0.6em
+    z-index: 0
+//SECTION FOOTER  STYLES END
+//MODAL FORM STYLES
+.modal-form
+    display: none
+    position: fixed
+    z-index: 1
+    padding-top: 200px
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    overflow: auto
+    background-color: rgba(0,0,0,0.8)
+    &__content
+        background-color: rgb(0, 0, 0)
+        margin: auto
+        padding: 0
+        border: 2px solid rgb(255, 255, 255)
+        width: 30%
+        min-width: 300px
+        -webkit-animation-name: animatetop
+        -webkit-animation-duration: 0.4s
+        animation-name: animatetop
+        animation-duration: 0.4s
+    &__close
+        color: rgb(255, 255, 255)
+        float: right
+        font-size: 28px
+        font-weight: bold
+        &:hover, &:focus
+            text-decoration: none
+            cursor: pointer
+    &__header
+        padding: 2px 16px
+        color: rgb(255, 255, 255)
+        text-align: center
+    &__body
+        padding: 2px 16px
+    &__footer
+        padding: 10px 16px
+        color: rgb(255, 255, 255)
+        text-align: center
+    &__form
+        color: rgb(255, 255, 255)
+        &-item
+            width: 100%
+            padding: 10px 0
+            margin: 10px 0
+            &[type=text]
+                display: inline-block
+                padding: 12px 20px
+                margin: 8px 0
+                box-sizing: border-box
+                background: none
+                border: 1px solid rgb(255, 255, 255)
+                box-sizing: border-box
+                @include placeholder
+                &:hover, &:focus
+                    outline: none
+        &-btn
+            background: none
+            @include btn
+            &:hover, &:focus
+                outline: none
+//MODAL FORM STYLES END
+@import "media" // Always to end

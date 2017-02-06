@@ -1,0 +1,15 @@
+*.pyc
+*∼
+*.egg-info
+*.mo
+*.egg
+/.idea
+.idea
+db.py
+venv_*
+node_modules
+dist
+*.psd
+.DS_Store
+.env
+*.sqlite3
