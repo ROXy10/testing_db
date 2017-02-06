@@ -8,6 +8,7 @@ class AnswerInline(NestedStackedInline):
     extra = 1
     fk_name = 'question'
 
+
 class QuestionInline(NestedStackedInline):
     model = Question
     extra = 1
