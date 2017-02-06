@@ -1,6 +1,6 @@
 from django.contrib import admin
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
-from .models import Testing, Test, Question, Answer
+from .models import Testing, Test, Question, Answer, UserAnswer
 
 
 class AnswerInline(NestedStackedInline):
@@ -46,16 +46,6 @@ class QuestionAdmin(admin.ModelAdmin):
     ]
 
 
-class TestingAdmin(admin.ModelAdmin):
-    list_display = ['date', 'test', 'user', 'result']
-    list_display_links = ['date', 'test', 'user', 'result']
-    ordering = ['date', 'test', 'user', 'result']
-    list_filter = ['date', 'test', 'user', 'result']
-
-    list_per_page = 10
-    search_fields = ['test', 'user']
-
-
 class AnswerAdmin(admin.ModelAdmin):
     list_display = ['answer_title', 'question', 'correct']
     list_display_links = ['answer_title']
@@ -67,9 +57,27 @@ class AnswerAdmin(admin.ModelAdmin):
     search_fields = ['answer_title', 'question']
 
 
-# date_hierarchy = 'date'
+class UserAnswerInline(admin.TabularInline):
+    model = UserAnswer
+    extra = 1
+    fk_name = 'testing'
+
+
+class TestingAdmin(admin.ModelAdmin):
+    list_display = ['date', 'test', 'user', 'result']
+    list_display_links = ['date', 'test', 'user', 'result']
+    ordering = ['date', 'test', 'user', 'result']
+    list_filter = ['date', 'test', 'user', 'result']
+
+    list_per_page = 10
+    search_fields = ['test', 'user']
+
+    inlines = [
+        UserAnswerInline,
+    ]
 
 admin.site.register(Testing, TestingAdmin)
 admin.site.register(Test, TestAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer, AnswerAdmin)
+admin.site.register(UserAnswer)

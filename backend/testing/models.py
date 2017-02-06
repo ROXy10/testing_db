@@ -57,10 +57,10 @@ class Testing(models.Model):
 
 
 class UserAnswer(models.Model):
-    testing = models.OneToOneField(Testing, n_delete=models.CASCADE, null=True, verbose_name="Тестування")
+    testing = models.ForeignKey(Testing, on_delete=models.CASCADE, null=True, verbose_name="Тестування")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, null=True, verbose_name="Користувач")
-    question = models.ForeignKey(Question, n_delete=models.CASCADE, null=True, verbose_name="Запитання")
-    answer = models.ForeignKey(Answer, n_delete=models.CASCADE, null=True, verbose_name="Відповідь")
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True, verbose_name="Запитання")
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, null=True, verbose_name="Відповідь")
     value = models.BooleanField(default=False, verbose_name="Значення відповіді")
 
     class Meta(object):
@@ -68,4 +68,4 @@ class UserAnswer(models.Model):
         verbose_name_plural = "Відповіді користувачів"
 
     def __str__(self):
-        return self.testing
+        return '%s - %s' % (self.question, self.answer)
