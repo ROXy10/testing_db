@@ -54,14 +54,14 @@ class TestingAdmin(admin.ModelAdmin):
 
 
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ['answer_title', 'test', 'correct']
+    list_display = ['answer_title', 'question', 'correct']
     list_display_links = ['answer_title']
-    list_editable = ['test', 'correct']
-    ordering = ['answer_title', 'test', 'correct']
-    list_filter = ['answer_title', 'test', 'correct']
+    list_editable = ['question', 'correct']
+    ordering = ['answer_title', 'question', 'correct']
+    list_filter = ['answer_title', 'question', 'correct']
 
     list_per_page = 10
-    search_fields = ['answer_title', 'test']
+    search_fields = ['answer_title', 'question']
 
 
 # date_hierarchy = 'date'

@@ -31,7 +31,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     answer_title = models.CharField(max_length=512, verbose_name="Відповідь")
-    test = models.ForeignKey(Question, on_delete=models.CASCADE, null=True, verbose_name="Питання")
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True, verbose_name="Питання")
     correct = models.BooleanField(default=False, verbose_name="Правильність")
 
     class Meta(object):
