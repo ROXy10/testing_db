@@ -8,11 +8,6 @@ class QuestionInline(admin.TabularInline):
     show_change_link = True
 
 
-class AnswerInline(admin.TabularInline):
-    model = Answer
-    show_change_link = True
-
-
 class TestAdmin(admin.ModelAdmin):
     list_display = ['test_title', 'is_active']
     list_display_links = ['test_title']
@@ -26,6 +21,11 @@ class TestAdmin(admin.ModelAdmin):
     inlines = [
         QuestionInline,
     ]
+
+
+class AnswerInline(admin.TabularInline):
+    model = Answer
+    show_change_link = True
 
 
 class QuestionAdmin(admin.ModelAdmin):
@@ -42,9 +42,31 @@ class QuestionAdmin(admin.ModelAdmin):
         AnswerInline,
     ]
 
+
+class TestingAdmin(admin.ModelAdmin):
+    list_display = ['date', 'test', 'user', 'result']
+    list_display_links = ['date', 'test', 'user', 'result']
+    ordering = ['date', 'test', 'user', 'result']
+    list_filter = ['date', 'test', 'user', 'result']
+
+    list_per_page = 10
+    search_fields = ['test', 'user']
+
+
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ['answer_title', 'test', 'correct']
+    list_display_links = ['answer_title']
+    list_editable = ['test', 'correct']
+    ordering = ['answer_title', 'test', 'correct']
+    list_filter = ['answer_title', 'test', 'correct']
+
+    list_per_page = 10
+    search_fields = ['answer_title', 'test']
+
+
 # date_hierarchy = 'date'
 
-admin.site.register(Testing)
+admin.site.register(Testing, TestingAdmin)
 admin.site.register(Test, TestAdmin)
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Answer)
+admin.site.register(Answer, AnswerAdmin)
